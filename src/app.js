@@ -3,9 +3,9 @@ const express = require('express')
 
 const app = express()
 
-//Vesta CP Node JS Template Unix socket server
-var rootPath = path.normalize(__dirname)
-const port = '/home/admin/web/api.devoverse.com/nodeapp/app.sock'
+//Unix socket VESTA CP/ 3000 Port
+const port = require("../port").port;
+
 
 // Define paths for Express config
 const pub_dir_path = path.join(__dirname, '../public')
@@ -51,7 +51,6 @@ app.listen(port, (err) => {
     return console.log('something bad happened', err)
   }
   console.log(`server is listening on ${port}`)
-  console.log(`root_path - ${rootPath}`)
   console.log(`views_path - ${views_path}`)
   console.log(`pub_dir_path - ${pub_dir_path}`)
 })
