@@ -3,6 +3,10 @@ const express = require('express')
 
 const app = express()
 
+//Vesta CP Node JS Template Unix socket server
+var rootPath = path.normalize(__dirname)
+const port = '/home/admin/web/api.devoverse.com/nodeapp/app.sock'
+
 // Define paths for Express config
 const pub_dir_path = path.join(__dirname, '../public')
 const views_path = path.join(__dirname, '../templates')
@@ -42,6 +46,12 @@ app.get('/weather', (req,res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, (err) => {
+  if (err) {
+    return console.log('something bad happened', err)
+  }
+  console.log(`server is listening on ${port}`)
+  console.log(`root_path - ${rootPath}`)
+  console.log(`views_path - ${views_path}`)
+  console.log(`pub_dir_path - ${pub_dir_path}`)
 })
